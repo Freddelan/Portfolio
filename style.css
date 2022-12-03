@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Permanent+Marker&display=swap');
 
 
-
-
 /* ************ Généralité ************ */
 body {
     margin: 0px;
@@ -17,21 +15,13 @@ body {
 
 header {
     background-color: background: hsla(270, 94%, 25%, 1);
-
     background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-
     background: -moz-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-
     background: -webkit-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#42047E", endColorstr="#07F49E", GradientType=1);
     ;
     height: 800px;
 }
-
-
-
-
 
 /* ************ Titre Principal ************ */
 #titrePrincipal {
@@ -135,7 +125,7 @@ header {
     padding: 0;
     text-align: center;
     opacity: 1;
-    margin-top: 215px;
+    margin-top: 370px;
     position: fixed;
     margin-left: 540px;
 
@@ -256,7 +246,7 @@ img.notbounce {
     display: block;
     padding-top: 50px;
     border-radius: 0.5%;
-    font-size: 180%;
+    font-size: 150%;
     width: 80%;
     height: 300px;
     text-align: justify;
@@ -325,7 +315,40 @@ h1 {
     }
 }
 
+.imgPresent {
+    width: 10%;
+    height: 10%;
+    margin-top: -25%;
+}
 
+.btn btn-primary {
+    background-color: #40c781;
+    border-radius: 3px;
+    /* Coins arrondis */
+    border-bottom: 2px solid #35a76e;
+    /* Petite bordure en bas du bouton */
+    text-align: center;
+    /* Centrer le texte */
+}
+
+.btn a {
+    text-decoration: none;
+    /* Supprimer le soulignage du lien */
+    line-height: 42px;
+    /* Changer la hauteur de la ligne d'écriture */
+    color: #fff;
+    /* Couleur du texte blanche */
+}
+
+.btn:hover {
+    background-color: #34a46c;
+    /* On modifie la couleur du fond au passage de la souris */
+}
+
+
+.btn btn-danger:active {
+    color: blue;
+}
 
 /* ************ Projets ************ */
 .projets h1 {

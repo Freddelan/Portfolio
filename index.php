@@ -1,3 +1,43 @@
+<!-- code pour envoyer un mail -->
+<?php 
+    if (isset($_POST["submit"])){
+        if (isset($_POST["user_name"])&& !empty($_POST["user_name"])&&
+        isset($_POST["objet"])&& !empty($_POST["objet"])&& isset($_POST["user_message"])&& !empty($_POST["user_message"])&& 
+        isset($_POST["user_mail"]) && !empty($_POST["user_mail"])){
+
+            $nom=$_POST["user_name"];
+            $mail=$_POST["user_mail"];
+            $objet=$_POST["objet"];
+            $msgutilisateur = $_POST["user_message"];
+            $message='
+                        Nom de l\'expéditeur: '.$nom.'
+                        Mail de l\'expéditeur: '.$mail.'
+                        '.$msgutilisateur.'
+            ';
+
+            echo "<p style='color:green; font-size:20px; border: 1px black solid; width:20%; text-align:center; margin-left:650px'>Votre message  bien été envoyé, merci.</p>";
+            
+            $subject = "Test envoi mail";
+
+            $headers = "Content-Type: text/plain; charset=utf-8\r\n";
+
+            $headers .= "From: freddelan59450@gmail.com\r\n";
+
+            if(mail("happyrush@hotmail.com", $objet, $message, $headers)){
+                
+                echo'';
+
+            }else{
+
+                echo 'Erreur envoi !';
+
+            }
+        }
+        else {echo"<p style='color:red; font-size:20px; border: 1px black solid; width:20%; text-align:center; margin-left:650px'>Il manque quelque chose !</p> ";}
+    
+    }
+    ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,7 +66,7 @@
 
     <header>
         <img src="Media/logo_transparent.png" alt="Logo_page" title="Accueil" id="logo" />
-        <img src="Media/image-sonic-1.jpg" alt="photo_identitée" id="identite" class="img-thumbnail bounce"
+        <img src="Media/identité _Matrix.jpeg" alt="photo_identitée" id="identite" class="img-thumbnail bounce"
             onclick="bouncysonic(this)">
 
         <div class="titre">
@@ -51,20 +91,38 @@
                 <a type="button" class="btn btn-danger" href="#specialitees"
                     title="aller aux Expériences">Expériences</a>
 
-                <a type="button" class="btn btn-danger" href="#" title="aller à Contacts">Contact</a>
+                <a type="button" class="btn btn-danger" href="#contact-form" title="aller à Contacts">Contact</a>
             </ul>
         </navigation>
     </header>
-    <div id="Présentation" class="texte">...
+    <div id="Présentation" class="texte">
+        <div>
+            <p id="textExample">Bonjour je m'appelle Frédéric, je suis Développeur Web Junior Français. J'ai fait,
+                 de ma passion pour l'informatique mon métier. Je mets mes compétences et mon savoir faire à votre service.
 
-        <p id="textExample">Bonjour je m'appelle Frédéric, je suis Développeur Web Junior Français. J'ai fait, depuis
-            peu de ma passion mon métier. Je connais les langages Html, le Css, le Javascript, Bootstrap...
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, similique cupiditate cumque aperiam
-            blanditiis corporis illum voluptatum vitae provident? Cum quod repellat earum totam distinctio, minus,
-            quisquam pariatur odio velit mollitia, alias sequi nobis deleniti magni asperiores quos incidunt recusandae
+            </p>
+            <div class="grid lg:grid-cols-3 col-span-2 lg:col-span-2 gap-6 container w-1/2 mx-auto text-center"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1; visibility: inherit;">
+                <a href="https://twitter.com/#" target="_blanck" rel="noreferrer">
+                    <button type="button" class="btn btn-light">
 
+                        <i class="devicon-twitter-original mr-2"></i>Twitter</button>
+                </a>
+                <a href="https://www.linkedin.com/in/frederic-delannoy-bb5167250/" target="_blanck" rel="noreferrer">
+                    <button type="button" class="btn btn-danger">
 
-        </p>
+                        <i class="devicon-linkedin-plain mr-2"></i>Linkedin</button>
+                </a>
+                <a href="https://github.com/Freddelan" target="_blanck" rel="noreferrer">
+                    <button type="button" class="btn btn-primary">
+
+                        <i class="devicon-github-original mr-2"></i>Github</button>
+                </a>
+            </div>
+        </div>
+        <div>
+            <img class="imgPresent" src="media/identité _Matrix.jpeg" alt="image_presentation">
+        </div>
         <!-- <button type="button" onclick="animateText(textExample)" class="btn btn-success">Jouez l'animation !</button> -->
     </div>
 
@@ -160,9 +218,11 @@
                     en discuter...</p>
 
 
-                <form id="contact-form" method="post" action="contact.php" role="form">
+                <form id="contact-form" method="post" action="" role="form">
 
-                    <div class="messages"></div>
+
+
+
 
                     <div class="controls">
 
@@ -170,27 +230,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name"></label>
-                                    <input id="form_name" type="text" name="name" class="form-control"
+                                    <input id="form_name" type="text" name="user_name" class="form-control"
                                         placeholder="Veuillez entrer votre nom *" required="required"
                                         data-error="Nom est obligatoire.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="form_lastname"></label>
-                                    <input id="form_lastname" type="text" name="surname" class="form-control"
-                                        placeholder="Veuillez entre votre prénom *" required="required"
-                                        data-error="Prénom est obligatoire.">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_email"></label>
-                                    <input id="form_email" type="email" name="email" class="form-control"
+                                    <input id="form_email" type="email" name="user_mail" class="form-control"
                                         placeholder="Veuillez entrer votre email *" required="required"
                                         data-error="Un email valid est obligatoire.">
                                     <div class="help-block with-errors"></div>
@@ -199,17 +251,25 @@
 
                         </div>
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="objet"></label>
+                                    <input class="form-control" type="text" id="objet" placeholder="Objet" name="objet">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="form_message"></label>
-                                    <textarea id="form_message" name="message" class="form-control"
+                                    <textarea id="form_message" name="user_message" class="form-control"
                                         placeholder="Votre Message *" rows="4" required="required"
                                         data-error="Veuillez remplir le champ Message."></textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <input type="submit" class="btn btn-success btn-send" value="Envoyer">
+                                <input type="submit" name="submit" class="btn btn-success btn-send" value="Envoyer">
                             </div>
                         </div>
                         <div class="row">
@@ -227,7 +287,10 @@
 
     </div>
     <!-- /.container-->
+    <script>
 
+
+    </script>
     <script type=" text/javascript" src="script.js">
         </script>
 
